@@ -29,6 +29,12 @@
       
     
 
+### TIMELINE (in seconds)
+
+    timeline: {
+        startTime:
+        stopTime: 
+    }
 ### PLAYER 
 
     player: {
