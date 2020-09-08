@@ -43,6 +43,7 @@
         name 
         age 
         position
+        shirtNumber
         playerMatchEvents[]
         }
 
@@ -188,9 +189,9 @@
         name
         leagueid
         season
+        player[]
     }
-
-
+    
 ### League
 
     league: {
