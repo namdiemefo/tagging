@@ -220,7 +220,7 @@
     
 ### Competition
 
-    league: {
+     {
         id
         type: {type: String}
         name: {type: String}
