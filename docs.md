@@ -223,6 +223,7 @@
     {
         id
         type: {type: String}
+        abbrev: {type: String}
         name: {type: String}
         country: {type: String}
         season: {type: String}
