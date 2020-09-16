@@ -38,167 +38,193 @@
 ### PLAYER 
 
     player: {
-        id 
-        teamId 
-        name 
-        age 
-        position
-        shirtNumber
-        playerMatchEvents[]
-        }
-
-### MATCH 
-    match: {
-        id
-        competitionId
-        teamA
-        teamB 
-        corners
-        freeKicks
-        passes
-        teamAPossession
-        teamBPossesion
-        teamAScoreLine
-        teamBScoreLine
-        yellowCardsTeamA
-        redCardsTeamA
-        yellowCardsTeamB
-        redCardsTeamB
-        shotsTeamA
-        shotsTeamB
-        shotsOnTargetTeamA
-        shotsOnTargetTeamB
-        }
-
+        teams: [],
+        name: { type: String },
+        position: { type: String },
+        number: {type: Number },
+        playerMatchEvents: [],
+    }
 
 ### PLAYER EVENTS DURING MATCH
     playerMatchEvents: {
             matchId
-            playerId 
-            competitionId
-
-            passes: {
-                timeLine[]
-                successfulLongPasses
-                successfulLineBreakingPasses
-                successfulShortPasses
-                totalNumberOfPasses
-            }
-            
-            dribbles : {
-                timeLine[]
-                successfulNutmegs
-                unsuccessfulNutmegs
-                successfulSkillMoves
-                unsuccessfulSkillMoves
-            }
-
-            shots : {
-                timeLine[]
-                longRangeOffTarget
-                longRangeOnTarget
-                shortRangeOffTarget
-                shortRangeOnTarget
-            }
-
-            crosses: {
-                timeLine[]
-                successful
-                unsuccessful
-                totalNumber
-            } 
-
-            goals: {
-                timeLine[]
-                headers
-                1v1
-                insideBox
-                outsideBox
-            }
-
-            assists : timeLine[]
-            chanceCreated: timeLine[]
-            freeKicks: {
-                timeLine[] 
-                chanceCreated
-            }
-
-            penalties: {
-                timeLine[]
-                missed
-                scored
-            }
-
-            fouls : {
-                wonInOpponentsHalf
-                wonInOwnHalf
-                ConcededInOpponentsHalf
-                ConcededInOwnHalf
-            }
-
-            interceptions: {
-                timeLine[]
-                opponentsHalf
-                ownHalf
-            }
-
-            tackles: {
-                successful 
-                unsuccessful 
-            }
-
-            ballProgression: {
-                timeLine[]
-                ownHalf
-                opponentsHalf
-            }
-
-            Blocks
-
-            Clearance: {
-                goalLine
-                underPressure
-            }
-
-            Duels: {
-                wonAerial
-                wonGround
-            }
-
-            saves: {
-                timeLine[]
-                1v1
-                insideBox
-                outsideBox
-            }
-
-            card: {
-                yellowDissent
-                yellowFoul
-                redFoul
-                redDissent
-            }
-
+            playerId,
+            start: { type: Number },
+    minutes: { type: Number },
+    bench: { type: Number },
+    successful_shortpass: { type: Number },
+    successful_longpass: { type: Number },
+    line_break_pass: {
+        total: { type: Number },
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }]
+    },
+    dribbles: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        attempts: { type: Number },
+        completed: { type: Number, default: 0 },
+        skill_moves: { type: Number },
+        nut_megs: { type: Number },
+        failed: { type: Number }
+    },
+    shots: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        outsidebox_ontarget: { type: Number },
+        outsidebox_offtarget: { type: Number },
+        insidebox_offtarget: { type: Number },
+        insidebox_ontarget: { type: Number },
+        total_shot: { type: Number }
+    },
+    crosses: { type: Number },
+    goals: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        header: { type: Number },
+        oneVone: { type: Number },
+        inside_box_shot_goal: { type: Number },
+        outside_box_shot_goal: { type: Number }
+    },
+    assists: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        total_assist: { type: Number }
+    },
+    chance_created: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        total_chances: { type: Number }
+    },
+    penalty: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        missed: { type: Number },
+        scored: { type: Number }
+    },
+    fouls: {
+        won_in_opp_half: { type: Number },
+        won_in_own_half: { type: Number },
+        conceded_in_own_half: { type: Number },
+        conceded_in_opp_half: { type: Number }
+    },
+    interceptions: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        opponents_half: { type: Number },
+        own_half: { type: Number },
+        total_interceptions: { type: Number }
+    },
+    tackles: {
+        successful: { type: Number },
+        unsuccessful: { type: Number }
+    },
+    ball_progression: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        own_half: { type: Number },
+        opp_half: { type: Number },
+        bp_total: { type: Number }
+    },
+    blocks: { type: Number },
+    clearance: {
+        goal_line: { type: Number },
+        under_pressure: { type: Number },
+        total_clearances: { type: Number }
+    },
+    duels: {
+        won_aerial: { type: Number },
+        won_ground: { type: Number },
+        total_duels: { type: Number }
+    },
+    saves: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        oneVone: { type: Number },
+        inside_box: { type: Number },
+        outside_box: { type: Number },
+        total_saves: { type: Number }
+    },
+    card: {
+        yellow_dissent: { type: Number },
+        yellow_foul: { type: Number },
+        red_dissent: { type: Number },
+        red_foul: { type: Number }
+    },
+    catches: {
+        timeline: [{
+            start_time: { type: Number },
+            stop_time: { type: Number }
+        }],
+        simple: { type: Number },
+        complex: { type: Number },
+        total_catches: { type: Number }
     }
+    }
+
+
+### Match
+    
+    competition_id: {},
+    team_A: {},
+    team_B: {},
+    playerEvents: [],
+    location: { type: String },
+    time: { type: String },
+    fans: { type: String },
+    refree: { type: String },
+    corners: { type: Number },
+    freeKicks: { type: Number },
+    passes: { type: Number },
+    team_A_posession: { type: Number },
+    team_B_posession: { type: Number },
+    team_A_scoreline: { type: Number },
+    team_B_scoreline: { type: Number },
+    yellow_cards_team_A: { type: Number },
+    yellow_cards_team_B: { type: Number },
+    red_cards_team_A: { type: Number },
+    red_cards_team_B: { type: Number },
+    shots_team_A: { type: Number },
+    shots_team_B: { type: Number },
+    shots_ontarget_team_A: { type: Number },
+    shots_ontarget_team_B: { type: Number },
 
 
 ### Team 
 
     team: {
-        id
-        name
-        leagueid
-        season
-        player[]
+        name: { type: String },
+        squad: [],
+        season: { type: String }
     }
     
-### League
+### Competition
 
     league: {
         id
-        name
-        season
+        type: {type: String}
+        name: {type: String}
+        country: {type: String}
+        season: {type: String}
     }
-
-
 
